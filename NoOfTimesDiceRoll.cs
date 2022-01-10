@@ -6,18 +6,19 @@ using System.Threading.Tasks;
 
 namespace SnakeAndLadder
 {
-    internal class ExactWinningPositionAt100
+    internal class NoOfTimesDiceRoll
     {
         public const int NoPlay = 0;
         public const int GotLadder = 1;
         public const int SnakeBite = 2;
         public const int WinningP = 100;
-        public static void RepeatTillWinningAtPosition100()
+        public static void CheckNoOfTimesDiceRoll()
         {
 
             int StartingP = 1;
             int CurrentP = 0;
 
+            int count = 0;
 
             while (StartingP <= WinningP)
             {
@@ -26,17 +27,18 @@ namespace SnakeAndLadder
                 int DiceRoll = random.Next(1, 7);
                 Console.WriteLine("You are getting the Number:" + DiceRoll);
 
+
                 Random random1 = new Random();
                 int Check = random1.Next(0, 3);
 
                 CurrentP = StartingP + DiceRoll;
-
+                count++;
                 if (CurrentP == 100)
                 {
 
                     StartingP = StartingP - DiceRoll;
                     Console.WriteLine("....................You won the game...................... ");
-
+                    Console.WriteLine("The Dice is thown by " + count);
                     break;
                 }
                 else if (CurrentP > 100)
@@ -62,7 +64,7 @@ namespace SnakeAndLadder
                 else if (Check == GotLadder)
                 {
                     StartingP = StartingP + DiceRoll;
-                    Console.WriteLine("You are moving forward by:" + DiceRoll);
+                    Console.WriteLine("You are moving forward by" + DiceRoll);
                 }
                 else if (Check == SnakeBite)
                 {
@@ -83,10 +85,9 @@ namespace SnakeAndLadder
                 }
 
                 Console.WriteLine("Your position is " + StartingP);
-
+                Console.WriteLine("Dice is thrown by :" + count + "times");
 
             }
-
         }
     }
 }
